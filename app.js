@@ -5,12 +5,10 @@ let campo = document.getElementById("listaAmigos");
 function adicionarAmigo(){
 
     
-    if (document.getElementById("amigo").value == " ")
-        alert ("Campo vazio!");
-
-
-    if (amigos.includes(document.querySelector("input").value)){
-        alert ("Amigo já incluso na lista!");
+    
+    if (!validaCampo()){
+        alert("Siga as instruções corretamente!");
+        document.getElementById("amigo").value = " ";
     }
     else {
         
@@ -35,5 +33,24 @@ function sortearAmigo(){
     let campo = document.getElementById("resultado");
     campo.innerHTML = `<li>${amigos[num - 1]}</li>`;
     
+
+}
+
+function validaCampo(){
+
+    let value = document.querySelector("input").value;;
+
+    if (value == ""){
+        alert("Campo vazio!");
+        return false;
+    
+    } 
+
+    if (amigos.includes(value)){
+        alert("Esse nome já está na lista!");
+        return false;
+    }
+    
+    return true;
 
 }
